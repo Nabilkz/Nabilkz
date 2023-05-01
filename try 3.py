@@ -29,6 +29,19 @@ import datetime                   # to get date and time
 import webbrowser                 # to open and perform web tasks
 import serial                     # for serial communication
 import pywhatkit                  # for more web automation
+
+import speech_recognition as sr
+import os
+import wave
+import json
+from vosk import Model, KaldiRecognizer
+
+# Load the Vosk model
+model = Model("model")
+
+# Set up the recognizer
+rec = KaldiRecognizer(model, 16000)
+
 try:
     port = serial.Serial("COM10", 9600)
     print("Phycial body, connected.")
@@ -78,10 +91,13 @@ def username():
     speak("How can i Help you, Sir")
     port.write(b'h')
 
+
 def takeCommand():
     
-    r = sr.Recognizer()
     
+ r = sr.Recognizer()
+ rec.AcceptWaveform(audio.get_wav_data())
+
     with sr.Microphone() as source:
         
         print("Listening...")
@@ -90,7 +106,7 @@ def takeCommand():
 
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language ='en-in')
+        query = json.loads(rec.FinalResult())["text"] ='en-in')
         print(f"User said: {query}\n")
         
     except Exception as e:
@@ -99,6 +115,9 @@ def takeCommand():
         return "None"
     
     return query
+
+
+
 
 def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
