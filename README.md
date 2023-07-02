@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @Nabilkz
-- 👀 I’m interested in flutter and html
-- 🌱 I’m currently learning more about fluteer
+- 👀 I’m interested in flutter and python (AI and any thing else)
+- 🌱 I’m currently learning more about AI
 - 💞️ I’m looking to collaborate on anythink (like mobil,windows,mac,linux apps(flutter) and web(HTML,JavaScript,Css,flutter))
 - 📫 How to reach me on whatsapp 0947000636 or nn2510220@gmail.com
 
